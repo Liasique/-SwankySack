@@ -44,7 +44,10 @@ class OrderSuccessController extends AbstractController
         $this->em->flush();
         $this->addFlash('success', 'Votre commande a bien été validée.');
 
-        $content = "Bonjour, ". $order->getUser()->getFirstName(). ' '. $order->getUser()->getLastName() . "\n Merci pour votre commande sur notre boutique.\n\n";
+       /*  $content = "Bonjour, ". $order->getUser()->getFirstName(). ' '. $order->getUser()->getLastName() . "\n Merci pour votre commande sur notre boutique.\n\n"; */
+      /*  $content =  $order->getUser()->getFirstName() . ' ' . $order->getUser()->getLastName() . "\n\n" . "Votre commande #" . $order->getRef() . " a bien été validée. "; */
+      $content =  $order->getUser()->getFirstName() . ' ' . $order->getUser()->getLastName() . '<br><br>';
+      $content .= "Votre commande #" . $order->getRef() . " a bien été validée. ";
         $this->mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstName(). ' '. $order->getUser()->getLastName(), 'Votre commande a bien été validée', $content);
         $this->logger->info('Order success email sent', ['to_email' => $order->getUser()->getEmail()]);
 

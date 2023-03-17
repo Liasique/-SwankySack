@@ -56,7 +56,7 @@ class ProductCrudController extends AbstractCrudController
         // OPTION 2:
         return [
             TextField::new('name', 'Nom du produit'),
-            SlugField::new('slug', 'Slug')->setTargetFieldName('name'),
+            SlugField::new('slug', 'Slug')->setTargetFieldName('subtitle'),
             ImageField::new('illustration', 'Illustration')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
@@ -68,6 +68,7 @@ class ProductCrudController extends AbstractCrudController
             BooleanField::new('isStock', 'En stock'),
             MoneyField::new('price', 'Prix')->setCurrency('EUR')->setStoredAsCents(true),
             TextEditorField::new('description', 'Description'),
+            TextEditorField::new('quota', 'Quota'),
         ];
     }
 }

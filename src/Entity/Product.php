@@ -42,6 +42,9 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?bool $isStock = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $quota = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -158,5 +161,17 @@ class Product
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    public function getQuota(): ?string
+    {
+        return $this->quota;
+    }
+
+    public function setQuota(?string $quota): self
+    {
+        $this->quota = $quota;
+
+        return $this;
     }
 }

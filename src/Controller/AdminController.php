@@ -1,79 +1,76 @@
 <?php
 
+// Espace de noms pour la classe
 namespace App\Controller;
 
+// Utilisation des dépendances nécessaires
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+// Classe AdminController étend la classe AbstractController
 class AdminController extends AbstractController
 {
+    // Route pour la page de connexion de l'administrateur
     #[Route('/admin/login', name: 'admin_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // Récupérer la dernière erreur d'authentification et le dernier nom d'utilisateur
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        // Renvoyer une réponse avec le rendu du template et les paramètres nécessaires
         return $this->render('@EasyAdmin/page/login.html.twig', [
-            // parameters usually defined in Symfony login forms
+            // Paramètres généralement définis dans les formulaires de connexion Symfony
             'error' => $error,
             'last_username' => $lastUsername,
 
-            // OPTIONAL parameters to customize the login form:
+            // Paramètres OPTIONNELS pour personnaliser le formulaire de connexion
 
-            // the translation_domain to use (define this option only if you are
-            // rendering the login template in a regular Symfony controller; when
-            // rendering it from an EasyAdmin Dashboard this is automatically set to
-            // the same domain as the rest of the Dashboard)
+            // Domaine de traduction à utiliser
             'translation_domain' => 'admin',
 
-            // the title visible above the login form (define this option only if you are
-            // rendering the login template in a regular Symfony controller; when rendering
-            // it from an EasyAdmin Dashboard this is automatically set as the Dashboard title)
+            // Titre affiché au-dessus du formulaire de connexion
             'page_title' => 'BOUTIQUE - Login',
 
-            // the string used to generate the CSRF token. If you don't define
-            // this parameter, the login form won't include a CSRF token
+            // Chaîne utilisée pour générer le jeton CSRF
             'csrf_token_intention' => 'authenticate',
 
-            // the URL users are redirected to after the login (default: '/admin')
+            // URL de redirection après la connexion
             'target_path' => $this->generateUrl('admin'),
 
-            // the label displayed for the username form field (the |trans filter is applied to it)
-            'username_label' => 'paterne',
+            // Libellé affiché pour le champ nom d'utilisateur
+            'username_label' => 'olga',
 
-            // the label displayed for the password form field (the |trans filter is applied to it)
+            // Libellé affiché pour le champ mot de passe
             'password_label' => '123456789',
 
-            // the label displayed for the Sign In form button (the |trans filter is applied to it)
+            // Libellé affiché pour le bouton de connexion
             'sign_in_label' => 'Log in',
 
-            // the 'name' HTML attribute of the <input> used for the username field (default: '_username')
+            // Attribut 'name' HTML de l'élément <input> utilisé pour le champ nom d'utilisateur
             'username_parameter' => 'my_custom_username_field',
 
-            // the 'name' HTML attribute of the <input> used for the password field (default: '_password')
+            // Attribut 'name' HTML de l'élément <input> utilisé pour le champ mot de passe
             'password_parameter' => 'my_custom_password_field',
 
-            // whether to enable or not the "forgot password?" link (default: false)
+            // Activation ou non du lien "Mot de passe oublié ?"
             'forgot_password_enabled' => true,
 
-            // the path (i.e. a relative or absolute URL) to visit when clicking the "forgot password?" link (default: '#')
-            //'forgot_password_path' => $this->generateUrl('...', ['...' => '...']),
-
-            // the label displayed for the "forgot password?" link (the |trans filter is applied to it)
+            // Libellé affiché pour le lien "Mot de passe oublié ?"
             'forgot_password_label' => 'Forgot your password?',
 
-            // whether to enable or not the "remember me" checkbox (default: false)
+            // Activation ou non de la case à cocher "Se souvenir de moi"
             'remember_me_enabled' => true,
 
-            // remember me name form field (default: '_remember_me')
+            // Nom du champ formulaire pour "Se souvenir de moi"
             'remember_me_parameter' => 'custom_remember_me_param',
 
-            // whether to check by default the "remember me" checkbox (default: false)
+            // Vérification par défaut de la case "Se souvenir de moi"
             'remember_me_checked' => true,
 
-            // the label displayed for the remember me checkbox (the |trans filter is applied to it)
+            // Libellé affiché pour la case à cocher "Se souvenir de moi"
             'remember_me_label' => 'Remember me',
         ]);
     }

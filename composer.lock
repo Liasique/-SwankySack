@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01056e0718887662a8a5e7ace267a5fa",
+    "content-hash": "fd0519716b71939803f3807d539429a3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3000,16 +3000,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v10.6.0",
+            "version": "v10.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "5fc46f43c743c715cb5edeb7be3383efb7b4bb2e"
+                "reference": "aa25c11fb08ce149d609de0f3e54d0238dc1ff98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/5fc46f43c743c715cb5edeb7be3383efb7b4bb2e",
-                "reference": "5fc46f43c743c715cb5edeb7be3383efb7b4bb2e",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/aa25c11fb08ce149d609de0f3e54d0238dc1ff98",
+                "reference": "aa25c11fb08ce149d609de0f3e54d0238dc1ff98",
                 "shasum": ""
             },
             "require": {
@@ -3055,9 +3055,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v10.6.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v10.9.0"
             },
-            "time": "2023-02-16T23:01:54+00:00"
+            "time": "2023-03-09T19:55:35+00:00"
         },
         {
             "name": "symfony/asset",

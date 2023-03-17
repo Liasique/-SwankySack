@@ -54,8 +54,8 @@ class CartController extends AbstractController
 
 
 
-        return $this->redirectToRoute('products');
-        // return $this->redirectToRoute('cart');
+        /* return $this->redirectToRoute('products'); */
+        return $this->redirectToRoute('cart');
         //return $this->render('cart/index.html.twig');
     }
 
