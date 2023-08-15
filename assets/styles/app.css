@@ -73,7 +73,7 @@ nav a:link {
 }
 
 a:link {
-    color: #0735f3;
+    color: #151c36;
     text-decoration: none;
 }
 
@@ -407,6 +407,7 @@ nav {
     }
 }
 
+
 /********* MEDIA QUERIES MAX 768 *********/
 @media screen and (max-width: 812px) {
     .nav-links {
@@ -582,3 +583,37 @@ nav {
 
 
 }
+
+
+
+ .footer {
+     background-color: black;
+     border: #000 5px solid;
+     padding: 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .footer a {
+     color: #333;
+     text-decoration: none;
+     margin: 0 10px;
+ }
+
+ .footer a:hover {
+     color: #777;
+     text-decoration: none;
+ }
+
+ .footer .social-icons {
+     display: flex;
+     align-items: center;
+ }
+
+ .footer .social-icons a {
+     font-size: 20px;
+     margin-right: 15px;
+ }
+
+ 

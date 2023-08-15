@@ -31,10 +31,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/admin/impersonate, roles: ROLE_ALLOWED_TO_SWITCH }
-         - { path: ^/commande, roles: ROLE_USER }
-         - { path: ^/compte, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }  # Seuls les utilisateurs ayant le rôle ROLE_ADMIN peuvent accéder à /admin
+         - { path: ^/admin/impersonate, roles: ROLE_ALLOWED_TO_SWITCH }  # Seuls les utilisateurs avec le rôle ROLE_ALLOWED_TO_SWITCH peuvent accéder à /admin/impersonate
+         - { path: ^/commande, roles: ROLE_USER }  # Seuls les utilisateurs avec le rôle ROLE_USER peuvent accéder à /commande
+         - { path: ^/compte, roles: ROLE_USER }  # Seuls les utilisateurs avec le rôle ROLE_USER peuvent accéder à /compte
 
 when@test:
     security:

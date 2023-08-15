@@ -17,23 +17,25 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('string', TextType::class, [
-                'label' => 'Rechercher par nom de produit',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Votre recherche...',
-                    'class' => 'form-control mt-3',
-                ]
-            ])
+            // ->add('string', TextType::class, [
+            //     'label' => 'Rechercher par nom de produit',
+            //     'required' => false,
+            //     'attr' => [
+            //         'placeholder' => 'Votre recherche...',
+            //         'class' => 'form-control mt-3',
+            //     ]
+            // ])
+              // Ajouté le champ 'categories' de type EntityType
             ->add('categories', EntityType::class, [
-                'label' => 'Chercher par catégorie',
+                'label' => 'Chercher par marque',
                 'class'=> Category::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
             ])
+            // Ajouté le bouton 'submit' de type SubmitType
             ->add('submit', SubmitType::class, [
-                'label' => 'Filtrer',
+                'label' => 'Chercher',
                 'attr' => [
                     'class' => 'btn-block w3-black w-100'
                 ]

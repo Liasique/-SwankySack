@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block title %}The Swanky Sack
+{% endblock %}
 
-{% block title %}Mon compte : Boutique poles{% endblock %}
 
 {% block body %}
     <div class="container" style="margin-top: 100px">
@@ -15,7 +16,7 @@
         - <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
         - <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
         - <a href="{{ path('account_order') }}">Mes commandes </a><br>
-        - Modifier mes informations personnelles
+        {# - Modifier mes informations personnelles #}
         <hr>
     </hr>
 {% endblock %}

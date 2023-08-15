@@ -27,7 +27,7 @@ class HomeController extends AbstractController
     {
         //$categories = $this->em->getRepository(Category::class)->findAll();
         // Affichage des meilleurs produits
-        $products = $this->em->getRepository(Product::class)->findByIsBest(1);
+        $products = $this->em->getRepository(Product::class)->findBy([],['isBest' => 'ASC'], 4);
         $carousels = $this->em->getRepository(Carousel::class)->findAll();
 
         return $this->render('home/index.html.twig', [
