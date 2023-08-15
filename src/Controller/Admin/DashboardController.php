@@ -38,11 +38,11 @@ class DashboardController extends AbstractDashboardController
     }
 
 
-// Cette méthode impersonate() permet à un utilisateur avec le rôle d'administrateur de prendre l'identité d'un autre utilisateur. 
-// Cependant, avant de pouvoir l'utiliser, l'utilisateur doit avoir le rôle 'ROLE_ALLOWED_TO_SWITCH' et 'ROLE_ADMIN'. 
-// Sinon, une exception AccessDeniedException est levée. L'utilisateur courant est ensuite basculé vers l'utilisateur spécifié. 
-// Si l'utilisateur courant est toujours un administrateur après le basculement, il est redirigé vers la route 'admin'. 
-// Sinon, il est redirigé vers la route 'home'.
+    // Cette méthode impersonate() permet à un utilisateur avec le rôle d'administrateur de prendre l'identité d'un autre utilisateur. 
+    // Cependant, avant de pouvoir l'utiliser, l'utilisateur doit avoir le rôle 'ROLE_ALLOWED_TO_SWITCH' et 'ROLE_ADMIN'. 
+    // Sinon, une exception AccessDeniedException est levée. L'utilisateur courant est ensuite basculé vers l'utilisateur spécifié. 
+    // Si l'utilisateur courant est toujours un administrateur après le basculement, il est redirigé vers la route 'admin'. 
+    // Sinon, il est redirigé vers la route 'home'.
     public function impersonate(User $user): RedirectResponse
     {
         $this->denyAccessUnlessGranted('ROLE_ALLOWED_TO_SWITCH');
@@ -65,81 +65,84 @@ class DashboardController extends AbstractDashboardController
     }
 
 
-// Cette méthode configureDashboard() configure le tableau de bord de l'administration. 
-// Elle utilise la classe Dashboard de EasyAdminBundle pour définir des options telles que le titre du tableau de bord, 
-// le chemin vers l'icône de favicon, l'affichage maximisé du contenu et le domaine de traduction 
-// utilisé pour les textes du tableau de bord.
+    // Cette méthode configureDashboard() configure le tableau de bord de l'administration. 
+    // Elle utilise la classe Dashboard de EasyAdminBundle pour définir des options telles que le titre du tableau de bord, 
+    // le chemin vers l'icône de favicon, l'affichage maximisé du contenu et le domaine de traduction 
+    // utilisé pour les textes du tableau de bord.
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('The Swanky Sac')
+            ->setTitle('The Swanky Sack')
             ->setFaviconPath('favicon.ico')
             ->renderContentMaximized()
             ->setTranslationDomain('admin');
     }
 
 
-// Cette méthode configureMenuItems() configure les éléments de menu du tableau de bord de l'administration. 
-// Elle utilise la classe MenuItem de EasyAdminBundle pour définir différents liens et sections du menu. 
-// Chaque élément de menu est créé à l'aide de la méthode yield, ce qui permet de retourner un itérable d'éléments de menu.
+    // Cette méthode configureMenuItems() configure les éléments de menu du tableau de bord de l'administration. 
+    // Elle utilise la classe MenuItem de EasyAdminBundle pour définir différents liens et sections du menu. 
+    // Chaque élément de menu est créé à l'aide de la méthode yield, ce qui permet de retourner un itérable d'éléments de menu.
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fas fa-tachometer-alt');
-        yield MenuItem::linkToRoute('Aller à la Boutique', 'fa fa-home', 'products');
+        yield MenuItem::linkToDashboard('Dashboard', 'fas fa-tachometer-alt')
+            ->setCssClass('text-uppercase font-weight-bold text-info');;
+        yield MenuItem::linkToRoute('Aller à la Boutique', 'fa fa-home', 'products')
+            ->setCssClass('text-uppercase font-weight-bold text-info');;
 
         yield MenuItem::section('Gestion des articles');
         yield MenuItem::linkToCrud('Produits', 'fas fa-tags', Product::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
 
         yield MenuItem::section('Gestion des users');
         yield MenuItem::linkToCrud('User', 'fas fa-users', User::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
         // ->setPermission('ROLE_ADMIN');
 
-        yield MenuItem::linkToCrud('Adresse',  'fas fa-map-marker-alt', Address::class);
-        
+        yield MenuItem::linkToCrud('Adresse',  'fas fa-map-marker-alt', Address::class)
+            ->setCssClass('text-uppercase font-weight-bold text-info');
+
         yield MenuItem::section('Gestion des commandes');
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Order::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
-            // ->setPermission('ROLE_ADMIN');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
+        // ->setPermission('ROLE_ADMIN');
 
         yield MenuItem::linkToCrud('Transporteurs', 'fas fa-truck', Carrier::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
-            // ->setPermission('ROLE_ADMIN');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
+        // ->setPermission('ROLE_ADMIN');
 
         yield MenuItem::section('Gestion des factures');
         yield MenuItem::linkToCrud('Factures', 'fas fa-file-invoice', Invoice::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
-            // ->setPermission('ROLE_ADMIN');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
+        // ->setPermission('ROLE_ADMIN');
 
         yield MenuItem::section('Gestion des carousels');
         yield MenuItem::linkToCrud('Carousel', 'fas fa-images', Carousel::class)
             ->setDefaultSort(['id' => 'DESC'])
-            ->setCssClass('text-uppercase font-weight-bold text-warning');
-            // ->setPermission('ROLE_ADMIN');
+            ->setCssClass('text-uppercase font-weight-bold text-info');
+        // ->setPermission('ROLE_ADMIN');
     }
 
 
 
 
-// Cette méthode configureActions() configure les actions disponibles pour les entités affichées dans
-//  les pages d'index du CRUD (Create, Read, Update, Delete). Elle utilise la classe Actions de EasyAdminBundle 
-//  pour définir différentes actions et leurs options.
+    // Cette méthode configureActions() configure les actions disponibles pour les entités affichées dans
+    //  les pages d'index du CRUD (Create, Read, Update, Delete). Elle utilise la classe Actions de EasyAdminBundle 
+    //  pour définir différentes actions et leurs options.
 
-// Ici, les actions de création, d'édition et de suppression sont mises à jour pour modifier leur icône, 
-// leur libellé, leur classe CSS et leurs attributs HTML.
+    // Ici, les actions de création, d'édition et de suppression sont mises à jour pour modifier leur icône, 
+    // leur libellé, leur classe CSS et leurs attributs HTML.
 
-// De plus, une action de détail est ajoutée pour afficher les détails d'une entité dans la page d'index.
+    // De plus, une action de détail est ajoutée pour afficher les détails d'une entité dans la page d'index.
 
 
     public function configureActions(): Actions
@@ -150,7 +153,7 @@ class DashboardController extends AbstractDashboardController
             return $action
                 ->setIcon('fas fa-plus')
                 ->setLabel('AJOUTER')
-                ->setCssClass('btn btn-warning btn-sm text-white')
+                ->setCssClass('btn btn-info btn-sm text-white')
                 ->setHtmlAttributes(['title' => 'Ajouter un produit']);
         });
 
@@ -158,7 +161,7 @@ class DashboardController extends AbstractDashboardController
             return $action
                 ->setIcon('fas fa-pen')
                 ->setLabel('ÉDITER')
-                ->setCssClass('btn btn-warning btn-sm text-white')
+                ->setCssClass('btn btn-info btn-sm text-white')
                 ->setHtmlAttributes(['title' => 'Édit un produit']);
         });
 
@@ -166,7 +169,7 @@ class DashboardController extends AbstractDashboardController
             return $action
                 ->setIcon('fas fa-trash-alt')
                 ->setLabel('SUPPRIMER')
-                ->setCssClass('btn btn-warning btn-sm text-white')
+                ->setCssClass('btn btn-info btn-sm text-white')
                 ->setHtmlAttributes(['title' => 'Supprimer un produit']);
         });
 

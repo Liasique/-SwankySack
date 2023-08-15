@@ -25,10 +25,10 @@ class SearchType extends AbstractType
             //         'class' => 'form-control mt-3',
             //     ]
             // ])
-              // Ajouté le champ 'categories' de type EntityType
+            // Ajouté le champ 'categories' de type EntityType
             ->add('categories', EntityType::class, [
                 'label' => 'Chercher par marque',
-                'class'=> Category::class,
+                'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
@@ -39,8 +39,7 @@ class SearchType extends AbstractType
                 'attr' => [
                     'class' => 'btn-block w3-black w-100'
                 ]
-            ])
-        ;
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver): void
     {
