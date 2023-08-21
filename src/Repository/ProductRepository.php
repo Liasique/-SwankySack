@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Classe\recherche;
 use App\Classe\Search;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

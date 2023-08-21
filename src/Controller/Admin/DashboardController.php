@@ -37,7 +37,6 @@ class DashboardController extends AbstractDashboardController
         return $this->redirect($adminUrlGenerator->setController(ProductCrudController::class)->generateUrl());
     }
 
-
     // Cette méthode impersonate() permet à un utilisateur avec le rôle d'administrateur de prendre l'identité d'un autre utilisateur. 
     // Cependant, avant de pouvoir l'utiliser, l'utilisateur doit avoir le rôle 'ROLE_ALLOWED_TO_SWITCH' et 'ROLE_ADMIN'. 
     // Sinon, une exception AccessDeniedException est levée. L'utilisateur courant est ensuite basculé vers l'utilisateur spécifié. 
