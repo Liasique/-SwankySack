@@ -35,7 +35,7 @@ class OrderType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider ma commande',
                 'attr' => [
-                    'class' => 'btn btn-block btn-success w-100 w3-hover-green'
+                    'class' => 'w3-btn w3-teal w3-hover-black'
                 ]
             ]);
     }
@@ -44,7 +44,7 @@ class OrderType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
-            'user'=> []
+            'user' => []
         ]);
     }
 }

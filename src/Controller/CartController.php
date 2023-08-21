@@ -94,7 +94,7 @@ class CartController extends AbstractController
         $cart->favorites($id); // On ajoute le produit aux favoris
 
         // On ne fait aucune redirection vers une autre page, on reste sur la page show
-        
+
 
         //return $this->redirectToRoute('cart');
     }

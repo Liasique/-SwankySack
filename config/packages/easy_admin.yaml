@@ -20,6 +20,6 @@ easy_admin:
 
         login:
             path: '@EasyAdmin/page/login.html.twig'
-            username_label: 'paterne81@hotmail.fr'
-            password_label: 'Mardochee2008'
+            username_label: 'olgalukianets7@gmail.com'
+            password_label: 'Liasique'
             login_label: 'Se connecter'
