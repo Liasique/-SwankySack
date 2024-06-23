@@ -73,10 +73,9 @@ class ChangePasswordType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Modifier',
                 'attr' => [
-                    'class' => 'w3-btn w3-green',
+                    'class' => 'w3-btn w3-teal',
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
